@@ -1,4 +1,36 @@
 picturecaption
 ==============
 
-Polyfill to allow different figcaptions for different &lt;source>s within &lt;picture>
+Prolyfill to allow different figcaptions for different `<source>` tags within `<picture>`
+
+## Problem
+
+There is currently no way of defining different captions for the different images defined for the `<picture>` element, should the need arise.
+
+## Solution
+This prolyfill suggests a method of solving this by allowing multiple `<figcaption>` tags which use a `data-for` attribute to specify which one of the `<source>` tags elements the caption is for.
+
+For example:
+
+```html
+<figure>
+   <picture>
+      <source id="city" srcset="images/city-medium.jpg" media="(min-width: 800px)" >
+      <img src="images/castle.jpg" alt="A medieval castle">
+   </picture>
+   <figcaption data-for="city">The city</figcaption>
+   <figcaption>The castle</figcaption>
+</figure>
+```
+
+## Usage
+
+Simple include the `picturecaption.js` file at the end of your HTML file, before the closing `</body>` tag.
+
+## Known Issues
+
+It's not very stable at the moment as this is the first 'quick and dirty' implementaion of this idea to show how it might work.
+
+1. The `<figcaption>` tags must be defined *after* the `<picture>` tag
+2. It's not been wildely tested yet
+3. Code needs refactoring
