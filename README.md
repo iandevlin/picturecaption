@@ -31,6 +31,7 @@ Simple include the `picturecaption.js` file at the end of your HTML file, before
 
 It's not very stable at the moment as this is the first 'quick and dirty' implementaion of this idea to show how it might work.
 
-1. The `<figcaption>` tags must be defined *after* the `<picture>` tag
+1. The `<figcaption>` tags currently must be defined *after* the `<picture>` tag
 2. It's not been wildely tested yet
 3. Code needs refactoring
+4. Should probably allow multiple `alt` values as well via a `data-alt` attribute on each `<source>`
