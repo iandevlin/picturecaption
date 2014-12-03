@@ -35,3 +35,4 @@ It's not very stable at the moment as this is the first 'quick and dirty' implem
 2. It's not been wildely tested yet
 3. Code needs refactoring
 4. Should probably allow multiple `alt` values as well via a `data-alt` attribute on each `<source>`
+5. Only works when run on a webserver
