@@ -33,4 +33,10 @@ It's not very stable at the moment as this is the first 'quick and dirty' implem
 
 1. The `<figcaption>` tags currently must be defined *after* the `<picture>` tag
 2. It's not been wildely tested yet
+<<<<<<< HEAD
 3. Code needs refactoring
+=======
+3. Code needs refactoring
+4. Should probably allow multiple `alt` values as well via a `data-alt` attribute on each `<source>`
+5. Only works when run on a webserver
+>>>>>>> 8ca56ceb6af6e7ed9475cc360de56a5e725075f0

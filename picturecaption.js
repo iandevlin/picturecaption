@@ -1,7 +1,11 @@
+/*! picturecaption - allows multiple <figcaption> definitions for <source>s within <picture>
+ * Author: Ian Devlin, 2014
+ * License: MIT
+ */
 (function() {
     'use strict';
 
-    var debug = false,
+    var debug = true,
         data = [],
         lookup = {},
         defaultCaption,
