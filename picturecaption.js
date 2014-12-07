@@ -1,4 +1,4 @@
-/*! picturecaption - allows multiple <figcaption> definitions for <source>s within <picture>
+/*! picturecaption - allows multiple <figcaption> and alt definitions for <source>s within <picture>
  * Author: Ian Devlin, 2014
  * License: MIT
  */

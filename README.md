@@ -15,12 +15,12 @@ For example:
 ```html
 <figure>
    <picture>
-      <source id="city" srcset="images/city-medium.jpg" media="(min-width: 800px)"
-              data-alt="A castle with turrets looking down upon a city with a church spire in the right foreground">
-      <img src="images/castle.jpg" alt="A castle with turrets">>
+      <source id="town" srcset="images/city-medium.jpg" media="(min-width: 800px)"
+              data-alt="A view of the French town of Saumur, with its medieval castle looking down upon the town with a church spire in the right foreground">
+      <img src="images/castle.jpg" alt="The medieval castle in Saumur, France">
    </picture>
-   <figcaption data-for="city">The city</figcaption>
-   <figcaption>The castle</figcaption>
+   <figcaption data-for="town">TThe town of Saumur in France</figcaption>
+   <figcaption>The medieval castle in Saumur, France</figcaption>
 </figure>
 ```
 
