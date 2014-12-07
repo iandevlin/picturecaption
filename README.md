@@ -15,8 +15,9 @@ For example:
 ```html
 <figure>
    <picture>
-      <source id="city" srcset="images/city-medium.jpg" media="(min-width: 800px)" >
-      <img src="images/castle.jpg" alt="A medieval castle">
+      <source id="city" srcset="images/city-medium.jpg" media="(min-width: 800px)"
+              data-alt="A castle with turrets looking down upon a city with a church spire in the right foreground">
+      <img src="images/castle.jpg" alt="A castle with turrets">>
    </picture>
    <figcaption data-for="city">The city</figcaption>
    <figcaption>The castle</figcaption>
