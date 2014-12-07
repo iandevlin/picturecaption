@@ -19,7 +19,7 @@ For example:
               data-alt="A view of the French town of Saumur, with its medieval castle looking down upon the town with a church spire in the right foreground">
       <img src="images/castle.jpg" alt="The medieval castle in Saumur, France">
    </picture>
-   <figcaption data-for="town">TThe town of Saumur in France</figcaption>
+   <figcaption data-for="town">The town of Saumur in France</figcaption>
    <figcaption>The medieval castle in Saumur, France</figcaption>
 </figure>
 ```
