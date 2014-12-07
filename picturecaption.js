@@ -21,8 +21,6 @@
         console.log(figures);
     }
 
-    // TODO - need to deal with <figure>s first, and then <figcaption>s
-
     for (var i = 0; i < figures.length; i++) {
         for (var j = 0; j < figures[i].children.length; j++) {
             var el = figures[i].children[j],
@@ -38,11 +36,16 @@
                         var srcs = child.srcset.split(',');
                         for (var m = 0; m < srcs.length; m++) {
                             var src = srcs[m].trim().split(' '),
-                                imgSrc = parseSrc(src[0].trim());
+                                imgSrc = parseSrc(src[0].trim()),
+                                imgAlt = '';
+                            if (child.hasAttribute('data-alt')) {
+                                imgAlt = child.getAttribute('data-alt');
+                            }
                             data.push({
                                 id: child.id,
                                 src: imgSrc,
-                                caption: ''
+                                caption: '',
+                                alt: imgAlt
                             });
                             
                             lookup[imgSrc] = data[data.length - 1];
@@ -57,12 +60,20 @@
 
                             var data = lookup[parseSrc(e.target.currentSrc)];
                             defaultCaption.innerHTML = data.caption;
+                            e.target.alt = data.alt;
+
+                            if (debug) {
+                                console.log(data);
+                                console.log(e.target);
+                            }
+
                         });
                         var imgSrc = parseSrc(child.src);
                         data.push({
                             id: child.id,
                             src: imgSrc,
-                            caption: ''
+                            caption: '',
+                            alt: child.alt
                         });
 
                         lookup[imgSrc] = data[data.length - 1];
