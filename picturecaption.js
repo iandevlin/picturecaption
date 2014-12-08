@@ -5,7 +5,7 @@
 (function() {
     'use strict';
 
-    var debug = true,
+    var debug = false,
         data = [],
         lookup = {},
         defaultCaption,
