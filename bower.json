@@ -1,0 +1,8 @@
+{
+    "name": "picturecaption",
+    "version": "0.1.0",
+    "main": "picturecaption.js",
+    "ignore": [
+        ".gitignore"
+    ]
+}

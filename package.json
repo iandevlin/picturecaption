@@ -1,0 +1,21 @@
+{
+  "name": "picturecaption",
+  "version": "0.1.0",
+  "description": "Prolyfill to allow different figcaptions and alt text to be defined for different <source> tags within <picture>",
+  "keywords": [
+    "picturecaption",
+    "picture",
+    "responsive",
+    "figcaption"
+  ],
+  "license": "MIT",
+  "author": "Ian Devlin <ian@iandevlin.com> (http://iandevlin.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iandevlin/picturecaption.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-uglify": "~0.6.0"
+  }
+}
