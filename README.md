@@ -26,7 +26,7 @@ For example:
 
 ## Usage
 
-Simple include the `picturecaption.js` file at the end of your HTML file, before the closing `</body>` tag.
+Simple include the `picturecaption.min.js` (or `picturecaption.js`) file at the end of your HTML file, before the closing `</body>` tag.
 
 ## Known Issues
 
@@ -34,5 +34,5 @@ It's not very stable at the moment as this is the first 'quick and dirty' implem
 
 1. The `<figcaption>` tags currently must be defined *after* the `<picture>` tag
 2. It's not been wildely tested yet
-3. Code needs refactoring
+3. Code probably needs refactoring
 4. Only works when run on a webserver

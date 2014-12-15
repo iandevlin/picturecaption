@@ -1,5 +1,6 @@
 /*! picturecaption - allows multiple <figcaption> and alt definitions for <source>s within <picture>
  * Author: Ian Devlin, 2014
+ * Version: 0.1.0
  * License: MIT
  */
 (function() {
