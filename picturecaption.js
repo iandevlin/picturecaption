@@ -20,7 +20,8 @@
                     return data[i];
                 }
             }
-        }
+            return false;
+        };
     
     if (debug) {
         console.log(figures);
@@ -29,7 +30,9 @@
     for (var i = 0; i < figures.length; i++) {
         for (var j = 0; j < figures[i].children.length; j++) {
             var el = figures[i].children[j],
-                tag = el.tagName.toLowerCase();
+                tag = el.tagName.toLowerCase(),
+                item,
+                imgSrc;
             
             if (tag === 'picture') {
                 // store source elements and img element data
@@ -41,8 +44,8 @@
                         var srcs = child.srcset.split(',');
                         for (var m = 0; m < srcs.length; m++) {
                             var src = srcs[m].trim().split(' '),
-                                imgSrc = parseSrc(src[0].trim()),
                                 imgAlt = '';
+                            imgSrc = parseSrc(src[0].trim());
                             if (child.hasAttribute('data-alt')) {
                                 imgAlt = child.getAttribute('data-alt');
                             }
@@ -73,7 +76,7 @@
                             }
 
                         });
-                        var imgSrc = parseSrc(child.src);
+                        imgSrc = parseSrc(child.src);
                         data.push({
                             id: child.id,
                             src: imgSrc,
@@ -89,12 +92,12 @@
                 if (el.hasAttribute('data-for')) {
                     el.setAttribute('aria-hidden', true);
                     el.style.display = 'none';
-                    var item = getDataById(el.getAttribute('data-for'));
+                    item = getDataById(el.getAttribute('data-for'));
                     item.caption = el.innerHTML;
                 }
                 else {
                     defaultCaption = el;
-                    var item = getDataById('');
+                    item = getDataById('');
                     item.caption = el.innerHTML;
                 }
             }
