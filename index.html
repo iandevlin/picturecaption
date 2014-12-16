@@ -7,12 +7,13 @@
 <body>
     <figure>
        <picture>
-          <source id="town" srcset="images/city-medium.jpg" media="(min-width: 800px)"
-                  data-alt="A view of the French town of Saumur, with its medieval castle looking down upon the town with church spire in the right foreground">
-          <img src="images/castle.jpg" alt="The medieval castle in Saumur, France">
+          <source srcset="images/city-medium.jpg" media="(min-width: 800px)"
+                  data-alt="A view of the French town of Saumur, with its medieval castle looking down upon the town with church spire in the right foreground"
+                  aria-labelledby="town-caption">
+          <img src="images/castle.jpg" alt="The medieval castle in Saumur, France" aria-labelledby="default-caption">
        </picture>
-       <figcaption data-for="town">The town of Saumur in France</figcaption>
-       <figcaption>The medieval castle in Saumur, France</figcaption>
+        <figcaption id="town-caption">The town of Saumur in France</figcaption>
+        <figcaption id="default-caption">The medieval castle in Saumur, France</figcaption>
     </figure>
 
     <script src="picturecaption.min.js"></script>

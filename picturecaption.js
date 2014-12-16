@@ -1,31 +1,43 @@
 /*! picturecaption - allows multiple <figcaption> and alt definitions for <source>s within <picture>
  * Author: Ian Devlin, 2014
- * Version: 0.1.0
+ * Version: 0.2.0
  * License: MIT
  */
 (function() {
     'use strict';
 
-    var debug = false,
-        data = [],
+    var data = [],
         lookup = {},
         defaultCaption,
         figures = document.getElementsByTagName('figure'),
         parseSrc = function(src) {
             return src.replace(window.location.origin + window.location.pathname, '');
         },
-        getDataById = function(id) {
+        getDataById = function(labelId) {
             for (var i = 0; i < data.length; i++) {
-                if (data[i].id === id) {
+                if (data[i].labelledby === labelId) {
                     return data[i];
                 }
             }
             return false;
+        },
+        checkFigcaption = function (el, isDefault) {
+            if (el.hasAttribute('aria-labelledby')) {
+                labelledBy = el.getAttribute('aria-labelledby');
+                figcaption = document.getElementById(labelledBy);
+                if (figcaption) {
+                    if (isDefault) {
+                        defaultCaption = figcaption;
+                    }
+                    else {
+                        figcaption.setAttribute('aria-hidden', true);
+                        figcaption.style.display = 'none';
+                    }
+                    caption = figcaption.innerHTML;
+                }
+            }
         };
     
-    if (debug) {
-        console.log(figures);
-    }
 
     for (var i = 0; i < figures.length; i++) {
         for (var j = 0; j < figures[i].children.length; j++) {
@@ -38,7 +50,10 @@
                 // store source elements and img element data
                 for (var k = 0; k < el.children.length; k++) {
                     var child = el.children[k],
-                        childTag = child.tagName.toLowerCase();
+                        childTag = child.tagName.toLowerCase(),
+                        labelledBy = '',
+                        caption = '',
+                        figcaption;
                     if (childTag === 'source') {
                         // parse srcset
                         var srcs = child.srcset.split(',');
@@ -49,64 +64,46 @@
                             if (child.hasAttribute('data-alt')) {
                                 imgAlt = child.getAttribute('data-alt');
                             }
-                            data.push({
-                                id: child.id,
-                                src: imgSrc,
-                                caption: '',
-                                alt: imgAlt
-                            });
-                            
-                            lookup[imgSrc] = data[data.length - 1];
+                            checkFigcaption(child, false);
+                            if (!getDataById(labelledBy)) {
+                                data.push({
+                                    src: imgSrc,
+                                    labelledby: labelledBy,
+                                    caption: caption,
+                                    alt: imgAlt
+                                });
+
+                                lookup[imgSrc] = data[data.length - 1];
+                            }
+                            else {
+                                item = getDataById(labelledBy);
+                                item.src = imgSrc;
+                                item.alt = imgAlt;
+                            }
                         }
                     }
                     else if (childTag === 'img') {
                         child.addEventListener('load', function(e) {
-
-                            if (debug) {
-                                console.log(parseSrc(e.target.currentSrc));
-                            }
-
                             var data = lookup[parseSrc(e.target.currentSrc)];
                             defaultCaption.innerHTML = data.caption;
                             e.target.alt = data.alt;
-
-                            if (debug) {
-                                console.log(data);
-                                console.log(e.target);
-                            }
-
                         });
+                        checkFigcaption(child, true);
                         imgSrc = parseSrc(child.src);
                         data.push({
-                            id: child.id,
+                            labelledby: labelledBy,
                             src: imgSrc,
-                            caption: '',
+                            caption: caption,
                             alt: child.alt
                         });
-
                         lookup[imgSrc] = data[data.length - 1];
                     }
-                }
-            }
-            else if (tag === 'figcaption') {
-                if (el.hasAttribute('data-for')) {
-                    el.setAttribute('aria-hidden', true);
-                    el.style.display = 'none';
-                    item = getDataById(el.getAttribute('data-for'));
-                    item.caption = el.innerHTML;
-                }
-                else {
-                    defaultCaption = el;
-                    item = getDataById('');
-                    item.caption = el.innerHTML;
                 }
             }
         }
     }
 
-    if (debug) {
-        console.log(data);
-        console.log(lookup);
-    }
+    console.log(data);
+    console.log(lookup);
 
 })();
