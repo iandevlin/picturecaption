@@ -33,6 +33,5 @@ Simple include the `picturecaption.min.js` (or `picturecaption.js`) file at the 
 
 It's not very stable at the moment as this is the first 'quick and dirty' implementaion of this idea to show how it might work.
 
-1. The `<figcaption>` tags currently must be defined *after* the `<picture>` tag
-2. It's not been wildely tested yet
-3. Only works when run on a webserver
+1. It's not been wildely tested yet
+2. Only works when run on a webserver
