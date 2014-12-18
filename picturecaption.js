@@ -14,7 +14,7 @@
             return src.replace(window.location.origin + window.location.pathname, '');
         },
         getDataById = function(labelId) {
-
+            // Finds and returns the relevant data with id labelId
             for (var i = 0; i < data.length; i++) {
 
                 if (data[i].labelledby === labelId) {
@@ -38,9 +38,10 @@
                         figcaption.setAttribute('aria-hidden', true);
                         figcaption.style.display = 'none';
                     }
-                    caption = figcaption.innerHTML;
+                    return figcaption.innerHTML;
                 }
             }
+            return '';
         };
     
 
@@ -77,7 +78,7 @@
                                 imgAlt = child.getAttribute('data-alt');
                             }
 
-                            checkFigcaption(child, false);
+                            caption = checkFigcaption(child, false);
 
                             if (!getDataById(labelledBy)) {
                                 data.push({
@@ -105,7 +106,7 @@
                             e.target.setAttribute('aria-labelledby', data.labelledby);
                         });
 
-                        checkFigcaption(child, true);
+                        caption = checkFigcaption(child, true);
 
                         imgSrc = parseSrc(child.src);
 
